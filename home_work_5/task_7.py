@@ -17,10 +17,12 @@ with open('text_7.txt', 'r', encoding='utf-8') as f:
     firm_dict = {el.split()[0]: int(el.split()[2]) - int(el.split()[3]) for el in f}
 
     average_profit = 0
+    i = 0
     for el in firm_dict.values():
         if el >= 0:
+            i += 1
             average_profit += el
-    result_list = [firm_dict, {'average_profit': average_profit}]
+    result_list = [firm_dict, {'average_profit': average_profit / i}]
 
 with open('json_7.json', 'w', encoding='utf-8') as my_f:
-    json.dump(result_list, my_f, sort_keys=True)
+    json.dump(result_list, my_f)
